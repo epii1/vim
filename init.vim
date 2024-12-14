@@ -19,12 +19,15 @@ nnoremap <silent> <leader>r :Mru<cr>
 nnoremap <silent> <leader>s :call fzf#Open()<cr>
 nnoremap <silent> <leader>e :NvimTreeToggle<cr>
 nnoremap <silent> <leader>f :NvimTreeFindFile<cr>
+nnoremap <silent> <C-j> :Treewalker Down<cr>
+nnoremap <silent> <C-k> :Treewalker Up<cr>
+nnoremap <silent> <C-h> :Treewalker Left<cr>
+nnoremap <silent> <C-l> :Treewalker Right<cr>
 
 autocmd BufReadPost *
       \ if line("'\"") >= 1 && line("'\"") <= line("$")
       \ |   exe "normal! g`\""
       \ | endif
-autocmd TextYankPost * call lv#copy()
 autocmd InsertLeave * call lv#switchabc()
 autocmd BufRead *.vim nnoremap <buffer> <c-]> :call lv#vimjump()<cr>
 autocmd BufRead *.lua,*.proto,*.css,*.html,*.js,*.json call lv#expandtab(2)
